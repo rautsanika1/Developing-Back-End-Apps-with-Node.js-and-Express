@@ -1,0 +1,15 @@
+async function findBookByTitle(bookTitle) {
+  try {
+    const result = await axios.get(`http://localhost:3000/api/books/title/${bookTitle}`);
+    console.log("Books found with given title:", result.data);
+    return result.data;
+  } catch (err) {
+    console.error("Failed to fetch books:", err.message);
+    throw err;
+  }
+}
+
+// Example call
+findBookByTitle("sample")
+  .then(() => console.log("Search completed successfully"))
+  .catch(() => console.log("Search process ended with an error"));
